@@ -15,8 +15,8 @@ module ``about let`` =
     let LetBindsANameToAValue() =
         let x = 50
         
-        AssertEquality x __
-    
+        AssertEquality x 50
+            
     (* In F#, values created with let are inferred to have a type like
        "int" for integer values, "string" for text values, and "bool" 
        for true or false values. *)
@@ -28,7 +28,7 @@ module ``about let`` =
 
         let y = "a string"
         let expectedType = y.GetType()
-        AssertEquality expectedType typeof<FILL_ME_IN>
+        AssertEquality expectedType typeof<string>
 
     [<Koan>]
     let YouCanMakeTypesExplicit() =
@@ -38,10 +38,9 @@ module ``about let`` =
         let y:string = "forty two"
         let typeOfY = y.GetType()
 
-        AssertEquality typeOfX typeof<FILL_ME_IN>
-        AssertEquality typeOfY typeof<FILL_ME_IN>
-
-        (* You don't usually need to provide explicit type annotations types for 
+        AssertEquality typeOfX typeof<int>
+        AssertEquality typeOfY typeof<string>
+               (* You don't usually need to provide explicit type annotations types for 
            local varaibles, but type annotations can come in handy in other 
            contexts as you'll see later. *)
     
@@ -68,7 +67,7 @@ module ``about let`` =
         let mutable x = 100
         x <- 200
 
-        AssertEquality x __
+        AssertEquality x 200
 
     [<Koan>]
     let YouCannotModifyALetBoundValueIfItIsNotMutable() =
@@ -82,4 +81,4 @@ module ``about let`` =
         //      to reuse the name of a value in some cases using "shadowing".
         let x = 100
          
-        AssertEquality x __
+        AssertEquality x 100

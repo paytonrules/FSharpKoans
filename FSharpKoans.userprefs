@@ -1,0 +1,31 @@
+﻿<Properties StartupItem="FSharpKoans/FSharpKoans.fsproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FSharpKoans/AboutLet.fs">
+    <Files>
+      <File FileName="FSharpKoans/AboutAsserts.fs" Line="25" Column="10" />
+      <File FileName="FSharpKoans/PathToEnlightenment.fs" Line="27" Column="1" />
+      <File FileName="FSharpKoans/AboutModules.fs" Line="38" Column="53" />
+      <File FileName="FSharpKoans.Core/Helpers.fs" Line="24" Column="1" />
+      <File FileName="FSharpKoans/AboutLet.fs" Line="53" Column="34" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="FSharpKoans.Test" expanded="True">
+            <Node name="KoansRunner" expanded="True">
+              <Node name="Test" expanded="True">
+                <Node name="GetttingTheWholeOutput" expanded="True">
+                  <Node name=" Stops on failure" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
