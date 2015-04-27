@@ -55,8 +55,34 @@ module ``about the stock example`` =
     // tests for yourself along the way. You can also try 
     // using the F# Interactive window to check your progress.
 
+
     [<Koan>]
     let YouGotTheAnswerCorrect() =
-        let result =  __
+        let splitCommas (x:string) = 
+            x.Split([|','|])
+        
+        let keys =
+            List.head stockData
+            |> splitCommas
+            |> Array.toList
+
+        AssertEquality [|"Date"; "Open"; "High"; "Low"; "Close"; "Volume"; "Adj Close"|] keys
+
+        let rows =
+            List.tail stockData
+            |> List.map (fun x -> Array.toList( splitCommas x))
+        AssertEquality (List.head rows) ["2012-03-30";"32.40";"32.41";"32.04";"32.26";"31749400";"32.26"]
+
+        let keysAndRowToMap keys row = 
+            List.zip keys row
+            |> Map.ofList
+
+        let listOfInfo =
+            rows |> List.map (fun row -> keysAndRowToMap keys row)
+        
+        let sortedByDifferenceList = 
+            listOfInfo |> List.sortBy (fun elem -> abs (System.Double.Parse elem.["Open"] - System.Double.Parse elem.["Close"]))
+
+        let result =  (List.head (List.rev sortedByDifferenceList)).["Date"]
         
         AssertEquality "2012-03-13" result
