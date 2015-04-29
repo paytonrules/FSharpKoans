@@ -60,29 +60,23 @@ module ``about the stock example`` =
     let YouGotTheAnswerCorrect() =
         let splitCommas (x:string) = 
             x.Split([|','|])
+
+        let keysAndRowToMap keys row = 
+            List.zip keys row
+            |> Map.ofList
         
         let keys =
             List.head stockData
             |> splitCommas
             |> Array.toList
 
-        AssertEquality [|"Date"; "Open"; "High"; "Low"; "Close"; "Volume"; "Adj Close"|] keys
-
-        let rows =
+        let maximumStockDataRow =
             List.tail stockData
             |> List.map (fun x -> Array.toList( splitCommas x))
-        AssertEquality (List.head rows) ["2012-03-30";"32.40";"32.41";"32.04";"32.26";"31749400";"32.26"]
+            |> List.map (fun row -> keysAndRowToMap keys row)
+            |> List.maxBy (fun elem -> abs (System.Double.Parse elem.["Open"] - System.Double.Parse elem.["Close"]))
+            
 
-        let keysAndRowToMap keys row = 
-            List.zip keys row
-            |> Map.ofList
-
-        let listOfInfo =
-            rows |> List.map (fun row -> keysAndRowToMap keys row)
-        
-        let sortedByDifferenceList = 
-            listOfInfo |> List.sortBy (fun elem -> abs (System.Double.Parse elem.["Open"] - System.Double.Parse elem.["Close"]))
-
-        let result =  (List.head (List.rev sortedByDifferenceList)).["Date"]
+        let result =  maximumStockDataRow.["Date"]
         
         AssertEquality "2012-03-13" result
